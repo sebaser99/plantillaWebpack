@@ -34,14 +34,18 @@ module.exports = {
            },
            {
             test: /\.(woff|woff2)$/,
-            use: {
-                loader: 'url-loader',
-                limit: 10000,
-                mimetype: "application/font-woff",
-                name: "[name].[ext]"
+            use: [
+                    {
+                        loader: 'url-loader',
+                        options:{
+                            limit: 10000,
+                            mimetype: "application/font-woff",
+                            name: "[name].[ext]"
 
-            }
-           }
+                        },
+                    },
+                ],
+           },
         ],
     },
     plugins: [
