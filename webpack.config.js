@@ -16,11 +16,10 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js?$/,
+                test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                }
+                use: 'babel-loader',
+                
             },
            {
             test: /\.css$/,
@@ -28,9 +27,22 @@ module.exports = {
                 'style-loader',
                 'css-loader'
             ]
+           },
+           {
+            test: /\.(png|jpg|jepg|gif)$/,
+            use: 'file-loader'
+           },
+           {
+            test: /\.(woff|woff2)$/,
+            use: {
+                loader: 'url-loader',
+                limit: 10000,
+                mimetype: "application/font-woff",
+                name: "[name].[ext]"
 
+            }
            }
-        ]
+        ],
     },
     plugins: [
         new Webpack.HotModuleReplacementPlugin(),
